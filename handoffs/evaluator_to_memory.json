@@ -1,0 +1,45 @@
+{
+    "handoff_id": "eval_${Date.now()}",
+    "timestamp": "${new Date().toISOString()}",
+    "from_agent": "EvaluatorAgent",
+    "to_agent": "MemoryAgent",
+    "insights": [
+        {
+            "title": "Gemma3:4b Temperature 0.7 Optimal for Creative Tasks",
+            "category": "Parameter Optimization",
+            "confidence": 0.92,
+            "evidence_count": 4,
+            "evaluator_confirmed": true,
+            "consistent_results": true,
+            "multiple_tests": true,
+            "finding": "Gemma3:4b performs optimally for creative tasks with temperature setting of 0.7, showing 23% improvement in creativity scores compared to default 0.5 temperature.",
+            "recommendations": [
+                "Primary: Set temperature to 0.7 for all Gemma3:4b creative tasks",
+                "Secondary: Test temperature range 0.6-0.8 for fine-tuning",
+                "Validation: Confirm findings with longer creative prompts"
+            ]
+        },
+        {
+            "title": "Deepseek-r1:8b excels in analytical tasks",
+            "category": "Model Performance",
+            "confidence": 0.85,
+            "evidence_count": 3,
+            "evaluator_confirmed": true,
+            "consistent_results": true,
+            "multiple_tests": true,
+            "finding": "Deepseek-r1:8b consistently outperforms other models in analytical tasks, with a 15% higher accuracy rate.",
+            "recommendations": [
+                "Primary: Use Deepseek-r1:8b for all analytical tasks",
+                "Secondary: Investigate potential for further optimization with specific prompts"
+            ]
+        }
+    ],
+    "model_rankings": {
+        "creative": ["gemma3:4b", "llama2:13b"],
+        "analytical": ["deepseek-r1:8b", "mixtral:8x7b"]
+    },
+    "system_feedback": {
+        "overall_performance": "good",
+        "efficiency": "high"
+    }
+}
