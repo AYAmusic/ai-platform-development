@@ -1,0 +1,83 @@
+{
+    "handoff_id": "ana_${Date.now()}",
+    "timestamp": "${new Date().toISOString()}",
+    "from_agent": "AnalyticsAgent",
+    "to_agent": "OptimizerAgent",
+    "cycle_summary": {
+      "analytics_completed": true,
+      "performance_trend": "positive",
+      "roi_analysis": "excellent",
+      "strategic_recommendations": 4
+    },
+    "priority_optimizations": [
+      {
+        "priority": "highest",
+        "focus": "Creative task temperature optimization",
+        "target": "Test temperature 0.8 on Gemma3:4b",
+        "expected_roi": "340%",
+        "confidence": 0.92,
+        "reasoning": "Previous 0.7 temp showed 23% improvement, 0.8 may yield more"
+      },
+      {
+        "priority": "high", 
+        "focus": "Cost efficiency validation",
+        "target": "Test token limit optimizations on DeepSeek-R1",
+        "expected_roi": "180%",
+        "confidence": 0.78,
+        "reasoning": "Memory patterns suggest 15% cost reduction possible"
+      }
+    ],
+    "strategic_intelligence": {
+      "performance_status": {
+        "quality_trend": "+18% this cycle",
+        "efficiency_trend": "+12% cost reduction",
+        "optimization_success": "85% success rate",
+        "system_health": "excellent"
+      },
+      "market_opportunities": [
+        "Creative task optimization showing highest ROI",
+        "Cost efficiency improvements gaining momentum",
+        "Model specialization creating competitive advantages"
+      ],
+      "risk_assessment": {
+        "optimization_risks": "low",
+        "system_stability": "high",
+        "resource_constraints": "none identified"
+      }
+    },
+    "recommended_test_strategy": {
+      "test_1": {
+        "model": "gemma3:4b",
+        "parameters": {"temperature": 0.8, "reasoning_effort": "medium"},
+        "task_type": "creative",
+        "expected_outcome": "25% improvement",
+        "priority": "highest"
+      },
+      "test_2": {
+        "model": "deepseek-r1:8b", 
+        "parameters": {"temperature": 0.3, "max_tokens": 150},
+        "task_type": "analytical",
+        "expected_outcome": "15% cost reduction",
+        "priority": "high"
+      },
+      "test_3": {
+        "model": "Smart/Core",
+        "parameters": {"temperature": 0.5, "reasoning_effort": "high"},
+        "task_type": "general",
+        "expected_outcome": "10% efficiency gain",
+        "priority": "medium"
+      }
+    },
+    "success_metrics": {
+      "target_improvements": {
+        "quality": "+20% over baseline",
+        "efficiency": "+15% cost reduction", 
+        "speed": "+10% response time"
+      },
+      "validation_criteria": {
+        "minimum_tests": 5,
+        "confidence_threshold": 0.8,
+        "improvement_threshold": "10%"
+      }
+    }
+  }
