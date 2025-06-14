@@ -9,7 +9,6 @@ jobs:
   rebase-build-test:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: ghcr.io/${{ github.repository }}
       TEST_TAG: test
       NIGHTLY_TAG: nightly
     steps:
@@ -17,6 +16,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # Ensure git has an identity inside the runner (needed for rebase)
+      - name: Configure git user
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions[bot]"
+
+      # Compute a lowercase image name for GHCR (registry forbids uppercase)
+      - name: Set IMAGE_NAME env
+        run: echo "IMAGE_NAME=$(echo ghcr.io/${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Add upstream and rebase
         run: |
@@ -26,11 +35,13 @@ jobs:
 
       - name: Build Docker image with custom patches
         run: |
-          docker build -t $IMAGE_NAME:$TEST_TAG open-webui
+          LOWER_REPO=$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')
+          echo "LOWER_REPO=$LOWER_REPO" >> $GITHUB_ENV
+          docker build -t ghcr.io/${LOWER_REPO}:${TEST_TAG} open-webui
 
       - name: Start container for tests
         run: |
-          docker run -d -p 3000:8080 --name webui $IMAGE_NAME:$TEST_TAG
+          docker run -d -p 3000:8080 --name webui ghcr.io/${LOWER_REPO}:${TEST_TAG}
           echo "Container started for testing..."
 
       - name: Wait for WebUI to be up
@@ -56,5 +67,5 @@ jobs:
       - name: Push nightly tag
         if: success()
         run: |
-          docker tag $IMAGE_NAME:$TEST_TAG $IMAGE_NAME:$NIGHTLY_TAG
-          docker push $IMAGE_NAME:$NIGHTLY_TAG 
+          docker tag ghcr.io/${LOWER_REPO}:${TEST_TAG} ghcr.io/${LOWER_REPO}:${NIGHTLY_TAG}
+          docker push ghcr.io/${LOWER_REPO}:${NIGHTLY_TAG} 
